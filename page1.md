@@ -111,3 +111,15 @@ AssetStoreの検索バーに「Unity-Chan! Model」と記述し、検索して�
 <br>
 
 ### スタンダードアセットのインポート
+
+次にスタンダードアセットをダウンロードします。
+
+![](img/image1-13.png)
+
+先ほどと同じ要領でAssetStoreで「Standard Assets」を検索し、インポートしてください。
+
+<br>
+
+![](img/image1-14.png)
+
+このようにプロジェクトウィンドウにStandartAssetsのフォルダが表示されていればOKです。
