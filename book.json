@@ -1,0 +1,8 @@
+{
+    "language": "ja",
+    "title": "Unityチュートリアル①",
+    "description": "This is a Unity example",
+    "styles": {
+        "website": "styles/website.css"
+    }
+}
