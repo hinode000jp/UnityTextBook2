@@ -216,6 +216,129 @@ AssetStoreの検索バーに「Unity-Chan! Model」と記述し、検索して�
 <p><br></p>
 <p><img src="img/image1-14.png" alt=""></p>
 <p>このようにプロジェクトウィンドウにStandartAssetsのフォルダが表示されていればOKです。</p>
+<p><br></p>
+<h2 id="プレイヤーを動かす">プレイヤーを動かす</h2>
+<p>次に3Dキャラクターを動かすようにしたいと思います。</p>
+<p><img src="img/image1-15.png" alt=""></p>
+<p>まずはヒエラルキーウィンドウからPlaneを作成して配置してください。
+そして名前を「Ground」に変更し、Scaleをx: 4、y: 1、z: 4に変更します。</p>
+<p>次にプロジェクトウィンドウから「unity-chan! -&gt; Unity-Chan! Model -&gt; Prefabs」を開き、その中から「Unitychan_dynamic」をヒエラルキーウィンドウにドラッグ&amp;ドロップしてください。</p>
+<p>これでUnityちゃんをゲームビューの正面に配置することができました。</p>
+<p><br></p>
+<p><img src="img/image1-16.png" alt=""></p>
+<p>次にUnityちゃんを動かすようにしたいのですが、まずはこちらのエラーを解決したいと思います。</p>
+<p>コンソールウィンドウを開くと、このように大量のエラーが出てしまっています。</p>
+<p>色々条件があるのですが、今回は１番のエラーの問題点であるこの行</p>
+<pre><code>Assets/Standard Assets/Utility/SimpleActivatorMenu.cs(12,16): error CS0619: &apos;GUIText&apos; is obsolete: &apos;GUIText has been removed. Use UI.Text instead.&apos;
+</code></pre><p>こちらを修正したいと思います。</p>
+<p>このエラーを簡単に説明すると、「SimpleActivatorMenuスクリプトの12行目のGUITextは旧形式での記述方法なので修正してください」という意味になっています。</p>
+<p>ですので、VisualStudioでこのスクリプトを開きます。</p>
+<p><br></p>
+<p><img src="img/image1-17.png" alt=""></p>
+<p>そしてプログラムを上記の画像のように変更してください。</p>
+<pre><code class="lang-c#"><span class="hljs-keyword">using</span> UnityEngine.UI;
+</code></pre>
+<p>でこのファイル内でUIパーツを扱えるように宣言をし、</p>
+<pre><code class="lang-c#"><span class="hljs-keyword">public</span> Text camSwitchButton;
+</code></pre>
+<p>でGUIText型をText型に変更しました。
+これでエラーが消えるかと思いますので、保存してUnityに戻りましょう。</p>
+<p><br></p>
+<p><img src="img/image1-18.png" alt=""></p>
+<p>きちんと動くかどうか一度Unityを実行してみましょう。
+問題なく起動できていれば成功です。
+残りのエラーも全て消えました。</p>
+<p><br></p>
+<p><img src="img/image1-19.png" alt=""></p>
+<p>次にヒエラルキーでUnityちゃんを選択し、インスペクターウィンドウのAnimatorのControllerの部分を「ThirdPersonAnimatorController」に変更してください。
+ThirdPersonAnimatorControllerは「Standard Assets -&gt; Characters -&gt; ThirdPersonCharacter -&gt; Animator」の中に入っています。</p>
+<p><br></p>
+<p>次にunitychan_dynamicに「ThirdPersonUserControl」をドラッグ&amp;ドロップで追加してください。
+こちらは「Standard Assets -&gt; Characters -&gt; ThirdPersonCharacter -&gt; Scripts」に入っています。</p>
+<p>こちらを追加すると下の画像のように、「CapsuleCollider」「ThirdPersonCharacter」が自動でアタッチされます。</p>
+<p>そしてカプセルコライダーとThirdPersonCharacterの値を画像のように変更してください。</p>
+<p><img src="img/image1-20.png" alt=""></p>
+<p>これでキャラクターを動かす準備が整いました。
+Unityを保存して実行してみましょう。</p>
+<p><br></p>
+<p><img src="img/image1-21.gif" alt=""></p>
+<p>このようにUnityちゃんを動かせるようになっていれば成功です。</p>
+<p><br></p>
+<p><img src="img/image1-22.png" alt=""></p>
+<p>また、今回はunitychan_dynamicの「IdleChanger」と「FaceUpdate」は使用しないのでチェックを外しておきましょう。</p>
+<h2 id="カメラを動かそう">カメラを動かそう</h2>
+<p>これでプレイヤーを動かすことができました。
+しかし、カメラが固定されていると遠くに行くとUnityちゃんが見えなくなってしまいます。
+ですので、今回はUnityちゃんに合わせてカメラも一緒に移動するようにしたいと思います。</p>
+<p>本来であればUnityちゃんを動かすのと同様に、Standard Assetsを利用すればカメラもコードを書くことなく追従させることができるのですが、今回はせっかくなので自分で追従させるコードを書いていきたいと思います。</p>
+<p>ちなみに追従するカメラはStandardAssetsのCamerasの中のPrefabsに入っています。もし興味があったらあとで色々試してみてください。</p>
+<p>では早速カメラを追従させていきたいと思います。
+まずは一番簡単な方法からやってみましょう。
+その方法とはカメラをUnityちゃんの子要素にすることです。
+子要素にすると親要素、つまり一つ上の階層のオブジェクトが動けば連動して子要素も移動します。一旦試してみましょう。</p>
+<p><br></p>
+<p><img src="img/image1-23.png" alt=""></p>
+<p>まずはMainCameraのPositionをX=0、Y=2、Z=-2に変更し、RotationのXを20にしてください。
+Unityちゃんがきちんとシーンの中心座標（0, 0, 0）にいればこれでUnityちゃんの後ろにカメラが配置されます。
+次にこのMainCameraをunitychan_dynamicにドラッグ&amp;ドロップしてください。そうすると、このようにMainCameraがUnityちゃんの子要素になりました。
+これで一度実行してみましょう。</p>
+<p><br></p>
+<p><img src="img/image1-24.png" alt=""></p>
+<p>そうすると、このようにUnityちゃんと一緒にカメラが移動しました。
+もちろんこのままでも構わないのですが、せっかくなのでコードでカメラの追従を制御してみたいと思います。</p>
+<p><br></p>
+<p><img src="img/image1-25.png" alt=""></p>
+<p>一旦MainCameraをUnityちゃんの子要素から外しておきましょう。
+そしてMainCameraのインスペクターからAddComponentでNewScriptを選択してください。
+そしてScript名をCameraControllerとします。
+プロジェクトウィンドウに今作ったスクリプトが格納されたので新規でScriptsという名前のフォルダを作成し、そこに入れておきましょう。
+そこまで終わったらVisualStudioでスクリプトを開きます。</p>
+<p><br></p>
+<p><img src="img/image1-26.png" alt=""></p>
+<p>スクリプトを開いたらコードを記述していきます。
+まずはキャラクターの座標を入れるパブリック変数とキャラクターとカメラの相対距離を入れるVector3型の変数を定義します。
+Startメソッドの上の方に、</p>
+<pre><code class="lang-c#"><span class="hljs-keyword">public</span> Transform target;
+<span class="hljs-keyword">private</span> Vector3 offset;
+</code></pre>
+<p>このように記述してください。</p>
+<p>次にスタートメソッドでVector3型の変数offsetにカメラの座標からキャラクターの座標を引いた値を格納します。</p>
+<pre><code class="lang-c#">offset = GetComponent&lt;Transform&gt;().position - target.position;
+</code></pre>
+<p>このように記述します。
+最後にUpdateメソッド内でカメラの座標にキャラクターの座標位置とキャラクターとカメラの差分の距離を足した値を代入してあげます。</p>
+<pre><code class="lang-c#">GetComponent&lt;Transform&gt;().position = target.position + offset;
+</code></pre>
+<p><br></p>
+<p><img src="img/image1-27.png" alt=""></p>
+<p>ここまで記述できたらコードを保存してUnityに戻りましょう。
+そうすると、MainCameraのCameraControllerコンポーネントにTargetの項目があるので、そこにヒエラルキーからunitychan_dymamicをドラッグ&amp;ドロップして入れてあげます。
+ここまで終わったら実行してください。
+きちんとカメラがUnityちゃんを追従していれば成功です。
+忘れずにUnityを保存しておきましょう。</p>
+<p>CameraControllerスクリプトの全体のコードは以下のようになります。</p>
+<pre><code class="lang-c#"><span class="hljs-keyword">using</span> System.Collections;
+<span class="hljs-keyword">using</span> System.Collections.Generic;
+<span class="hljs-keyword">using</span> UnityEngine;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">CameraController</span> : <span class="hljs-title">MonoBehaviour</span>
+{
+    <span class="hljs-keyword">public</span> Transform target;
+    <span class="hljs-keyword">private</span> Vector3 offset;
+
+    <span class="hljs-comment">// Start is called before the first frame update</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Start</span>(<span class="hljs-params"></span>)</span>
+    {
+        offset = GetComponent&lt;Transform&gt;().position - target.position;
+    }
+
+    <span class="hljs-comment">// Update is called once per frame</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Update</span>(<span class="hljs-params"></span>)</span>
+    {
+        GetComponent&lt;Transform&gt;().position = target.position + offset;
+    }
+}
+</code></pre>
 
                                 
                                 </section>
@@ -255,7 +378,7 @@ AssetStoreの検索バーに「Unity-Chan! Model」と記述し、検索して�
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"プレイヤーの作成","level":"1.2","depth":1,"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Unityチュートリアル①","language":"ja","gitbook":"*","description":"This is a Unity example"},"file":{"path":"page1.md","mtime":"2021-01-15T09:53:54.138Z","type":"markdown"},"gitbook":{"version":"3.6.15","time":"2021-01-15T09:54:12.343Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"プレイヤーの作成","level":"1.2","depth":1,"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Unityチュートリアル①","language":"ja","gitbook":"*","description":"This is a Unity example"},"file":{"path":"page1.md","mtime":"2021-01-17T13:19:15.861Z","type":"markdown"},"gitbook":{"version":"3.6.15","time":"2021-01-17T13:19:27.790Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

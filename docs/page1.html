@@ -1,0 +1,457 @@
+
+<!DOCTYPE HTML>
+<html lang="ja" >
+    <head>
+        <meta charset="UTF-8">
+        <title>プレイヤーの作成 · Unityチュートリアル①</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 3.6.15">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="styles/website.css">
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="./" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="検索ワードを入力" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2" data-path="page1.html">
+            
+                <a href="page1.html">
+            
+                    
+                    プレイヤーの作成
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            HonKitで公開 
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >プレイヤーの作成</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="3人称視点ゲームの作成">3人称視点ゲームの作成</h1>
+<h2 id="新規プロジェクトの作成">新規プロジェクトの作成</h2>
+<p><br></p>
+<p>まずは新規プロジェクトを作成します。</p>
+<p><img src="img/image1-1.png" alt=""></p>
+<p>UnityHubを開き、右上の新規作成ボタンを押してください。</p>
+<p>テンプレートは3Dのままで、プロジェクト名はなんでも構いません。ここでは「CharacterGame」としておきます。
+保存先を決めたら作成ボタンを押します。</p>
+<p><br></p>
+<p><img src="img/image1-2.png" alt=""></p>
+<p>Unityが開けたらUnityエディタのレイアウトを任意の形にしてください。
+Unityエディタの右上の「Layout」から好きなレイアウトを設定できます。
+こちらの教材では「2 × 3」を利用します。</p>
+<p><br></p>
+<h2 id="アセットストアからインポート">アセットストアからインポート</h2>
+<h3 id="unityちゃんのインポート">Unityちゃんのインポート</h3>
+<p><br></p>
+<p>プロジェクト作成が終わったら早速アセットストアから3D素材をインポートします。</p>
+<p><img src="img/image1-3.png" alt=""></p>
+<p>UnityのWindowタブからAssetStoreを選択します。
+そうすると、このようにSceneウィンドウの場所にAssetStoreが表示されます。</p>
+<p><br></p>
+<p><img src="img/image1-4.png" alt=""></p>
+<p>このままでは少しウィンドウが小さいので、AssetStoreタブの点線アイコンから「Maximize」を選択します。</p>
+<p><br></p>
+<p><img src="img/image1-5.png" alt=""></p>
+<p>次にこちらの言語タブから日本語を選択してください。
+これで日本語表記でアセットストアを表示できます。</p>
+<p>今回はUnityJapanから公式に出されている「Unity-Chan! Model」と、Unityでゲームを作成するときに便利なアセットが入っている「Standard Assets」をインポートします。</p>
+<p><br></p>
+<p><img src="img/image1-6.png" alt=""></p>
+<p>まずはUnityちゃんをインポートします。
+AssetStoreの検索バーに「Unity-Chan! Model」と記述し、検索してください。</p>
+<p><br></p>
+<p><img src="img/image1-7.png" alt=""></p>
+<p>そうすると、このようにUnityちゃんのアセットが表示されますので、こちらを選択してください。</p>
+<p><br></p>
+<p><img src="img/image1-8.png" alt=""></p>
+<p>既に別のプロジェクト等でインストールしたことのある場合はこのように「インポート」のボタンが表示されますが、初めてこのアセットをインポートする場合はこちらのボタンは「ダウンロード」になっています。</p>
+<p>まだダウンロードしていない場合は、こちらのボタンからダウンロードを実行してください。
+しばらく待っているとダウンロードが完了し、こちらのボタンが画像のようにインポートに変わります。</p>
+<p>次にこの「インポート」ボタンをクリックします。</p>
+<p><br></p>
+<p><img src="img/image1-9.png" alt=""></p>
+<p>そうすると、このようなウィンドウが表示されますので、全てにチェックが入っているのを確認してから右下の「Import」ボタンをクリックします。</p>
+<p><br></p>
+<p><img src="img/image1-10.png" alt=""></p>
+<p>インポートが完了したらアセットストアの全画面表示を終了させてUnityエディタを開きましょう。</p>
+<p>このようにProjectウィンドウに「unity-chan」が表示されていれば成功です。</p>
+<p><br></p>
+<p>まずはこの3DキャラクターがきちんとUnityで動作できるか確認しましょう。</p>
+<p><img src="img/image1-11.gif" alt=""></p>
+<p>プロジェクトウィンドウで「unity-chan! -&gt; Unity-chan! Model -&gt; Scenes -&gt; ActionCheck」をダブルクリックで開きましょう。
+そしてUnityエディタの上の方にある実行ボタンを押してください。
+そして、ゲームビューで3Dキャラクターが動き出せば成功です。</p>
+<p>また、ゲームビューに表示されているChangeMotionのNextボタンをクリックすると、画像のように次々とアニメーションが切り替わるかと思います。</p>
+<p><br></p>
+<p><img src="img/image1-12.gif" alt=""></p>
+<p>動作確認ができたので元のシーン「Assets -&gt; Scenes -&gt; SampleScene」を開き直しておきましょう。</p>
+<p><br></p>
+<h3 id="スタンダードアセットのインポート">スタンダードアセットのインポート</h3>
+<p>次にスタンダードアセットをダウンロードします。</p>
+<p><img src="img/image1-13.png" alt=""></p>
+<p>先ほどと同じ要領でAssetStoreで「Standard Assets」を検索し、インポートしてください。</p>
+<p><br></p>
+<p><img src="img/image1-14.png" alt=""></p>
+<p>このようにプロジェクトウィンドウにStandartAssetsのフォルダが表示されていればOKです。</p>
+<p><br></p>
+<h2 id="プレイヤーを動かす">プレイヤーを動かす</h2>
+<p>次に3Dキャラクターを動かすようにしたいと思います。</p>
+<p><img src="img/image1-15.png" alt=""></p>
+<p>まずはヒエラルキーウィンドウからPlaneを作成して配置してください。
+そして名前を「Ground」に変更し、Scaleをx: 4、y: 1、z: 4に変更します。</p>
+<p>次にプロジェクトウィンドウから「unity-chan! -&gt; Unity-Chan! Model -&gt; Prefabs」を開き、その中から「Unitychan_dynamic」をヒエラルキーウィンドウにドラッグ&amp;ドロップしてください。</p>
+<p>これでUnityちゃんをゲームビューの正面に配置することができました。</p>
+<p><br></p>
+<p><img src="img/image1-16.png" alt=""></p>
+<p>次にUnityちゃんを動かすようにしたいのですが、まずはこちらのエラーを解決したいと思います。</p>
+<p>コンソールウィンドウを開くと、このように大量のエラーが出てしまっています。</p>
+<p>色々条件があるのですが、今回は１番のエラーの問題点であるこの行</p>
+<pre><code>Assets/Standard Assets/Utility/SimpleActivatorMenu.cs(12,16): error CS0619: &apos;GUIText&apos; is obsolete: &apos;GUIText has been removed. Use UI.Text instead.&apos;
+</code></pre><p>こちらを修正したいと思います。</p>
+<p>このエラーを簡単に説明すると、「SimpleActivatorMenuスクリプトの12行目のGUITextは旧形式での記述方法なので修正してください」という意味になっています。</p>
+<p>ですので、VisualStudioでこのスクリプトを開きます。</p>
+<p><br></p>
+<p><img src="img/image1-17.png" alt=""></p>
+<p>そしてプログラムを上記の画像のように変更してください。</p>
+<pre><code class="lang-c#"><span class="hljs-keyword">using</span> UnityEngine.UI;
+</code></pre>
+<p>でこのファイル内でUIパーツを扱えるように宣言をし、</p>
+<pre><code class="lang-c#"><span class="hljs-keyword">public</span> Text camSwitchButton;
+</code></pre>
+<p>でGUIText型をText型に変更しました。
+これでエラーが消えるかと思いますので、保存してUnityに戻りましょう。</p>
+<p><br></p>
+<p><img src="img/image1-18.png" alt=""></p>
+<p>きちんと動くかどうか一度Unityを実行してみましょう。
+問題なく起動できていれば成功です。
+残りのエラーも全て消えました。</p>
+<p><br></p>
+<p><img src="img/image1-19.png" alt=""></p>
+<p>次にヒエラルキーでUnityちゃんを選択し、インスペクターウィンドウのAnimatorのControllerの部分を「ThirdPersonAnimatorController」に変更してください。
+ThirdPersonAnimatorControllerは「Standard Assets -&gt; Characters -&gt; ThirdPersonCharacter -&gt; Animator」の中に入っています。</p>
+<p><br></p>
+<p>次にunitychan_dynamicに「ThirdPersonUserControl」をドラッグ&amp;ドロップで追加してください。
+こちらは「Standard Assets -&gt; Characters -&gt; ThirdPersonCharacter -&gt; Scripts」に入っています。</p>
+<p>こちらを追加すると下の画像のように、「CapsuleCollider」「ThirdPersonCharacter」が自動でアタッチされます。</p>
+<p>そしてカプセルコライダーとThirdPersonCharacterの値を画像のように変更してください。</p>
+<p><img src="img/image1-20.png" alt=""></p>
+<p>これでキャラクターを動かす準備が整いました。
+Unityを保存して実行してみましょう。</p>
+<p><br></p>
+<p><img src="img/image1-21.gif" alt=""></p>
+<p>このようにUnityちゃんを動かせるようになっていれば成功です。</p>
+<p><br></p>
+<p><img src="img/image1-22.png" alt=""></p>
+<p>また、今回はunitychan_dynamicの「IdleChanger」と「FaceUpdate」は使用しないのでチェックを外しておきましょう。</p>
+<h2 id="カメラを動かそう">カメラを動かそう</h2>
+<p>これでプレイヤーを動かすことができました。
+しかし、カメラが固定されていると遠くに行くとUnityちゃんが見えなくなってしまいます。
+ですので、今回はUnityちゃんに合わせてカメラも一緒に移動するようにしたいと思います。</p>
+<p>本来であればUnityちゃんを動かすのと同様に、Standard Assetsを利用すればカメラもコードを書くことなく追従させることができるのですが、今回はせっかくなので自分で追従させるコードを書いていきたいと思います。</p>
+<p>ちなみに追従するカメラはStandardAssetsのCamerasの中のPrefabsに入っています。もし興味があったらあとで色々試してみてください。</p>
+<p>では早速カメラを追従させていきたいと思います。
+まずは一番簡単な方法からやってみましょう。
+その方法とはカメラをUnityちゃんの子要素にすることです。
+子要素にすると親要素、つまり一つ上の階層のオブジェクトが動けば連動して子要素も移動します。一旦試してみましょう。</p>
+<p><br></p>
+<p><img src="img/image1-23.png" alt=""></p>
+<p>まずはMainCameraのPositionをX=0、Y=2、Z=-2に変更し、RotationのXを20にしてください。
+Unityちゃんがきちんとシーンの中心座標（0, 0, 0）にいればこれでUnityちゃんの後ろにカメラが配置されます。
+次にこのMainCameraをunitychan_dynamicにドラッグ&amp;ドロップしてください。そうすると、このようにMainCameraがUnityちゃんの子要素になりました。
+これで一度実行してみましょう。</p>
+<p><br></p>
+<p><img src="img/image1-24.png" alt=""></p>
+<p>そうすると、このようにUnityちゃんと一緒にカメラが移動しました。
+もちろんこのままでも構わないのですが、せっかくなのでコードでカメラの追従を制御してみたいと思います。</p>
+<p><br></p>
+<p><img src="img/image1-25.png" alt=""></p>
+<p>一旦MainCameraをUnityちゃんの子要素から外しておきましょう。
+そしてMainCameraのインスペクターからAddComponentでNewScriptを選択してください。
+そしてScript名をCameraControllerとします。
+プロジェクトウィンドウに今作ったスクリプトが格納されたので新規でScriptsという名前のフォルダを作成し、そこに入れておきましょう。
+そこまで終わったらVisualStudioでスクリプトを開きます。</p>
+<p><br></p>
+<p><img src="img/image1-26.png" alt=""></p>
+<p>スクリプトを開いたらコードを記述していきます。
+まずはキャラクターの座標を入れるパブリック変数とキャラクターとカメラの相対距離を入れるVector3型の変数を定義します。
+Startメソッドの上の方に、</p>
+<pre><code class="lang-c#"><span class="hljs-keyword">public</span> Transform target;
+<span class="hljs-keyword">private</span> Vector3 offset;
+</code></pre>
+<p>このように記述してください。</p>
+<p>次にスタートメソッドでVector3型の変数offsetにカメラの座標からキャラクターの座標を引いた値を格納します。</p>
+<pre><code class="lang-c#">offset = GetComponent&lt;Transform&gt;().position - target.position;
+</code></pre>
+<p>このように記述します。
+最後にUpdateメソッド内でカメラの座標にキャラクターの座標位置とキャラクターとカメラの差分の距離を足した値を代入してあげます。</p>
+<pre><code class="lang-c#">GetComponent&lt;Transform&gt;().position = target.position + offset;
+</code></pre>
+<p><br></p>
+<p><img src="img/image1-27.png" alt=""></p>
+<p>ここまで記述できたらコードを保存してUnityに戻りましょう。
+そうすると、MainCameraのCameraControllerコンポーネントにTargetの項目があるので、そこにヒエラルキーからunitychan_dymamicをドラッグ&amp;ドロップして入れてあげます。
+ここまで終わったら実行してください。
+きちんとカメラがUnityちゃんを追従していれば成功です。
+忘れずにUnityを保存しておきましょう。</p>
+<p>CameraControllerスクリプトの全体のコードは以下のようになります。</p>
+<pre><code class="lang-c#"><span class="hljs-keyword">using</span> System.Collections;
+<span class="hljs-keyword">using</span> System.Collections.Generic;
+<span class="hljs-keyword">using</span> UnityEngine;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">CameraController</span> : <span class="hljs-title">MonoBehaviour</span>
+{
+    <span class="hljs-keyword">public</span> Transform target;
+    <span class="hljs-keyword">private</span> Vector3 offset;
+
+    <span class="hljs-comment">// Start is called before the first frame update</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Start</span>(<span class="hljs-params"></span>)</span>
+    {
+        offset = GetComponent&lt;Transform&gt;().position - target.position;
+    }
+
+    <span class="hljs-comment">// Update is called once per frame</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Update</span>(<span class="hljs-params"></span>)</span>
+    {
+        GetComponent&lt;Transform&gt;().position = target.position + offset;
+    }
+}
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="./" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Introduction">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"プレイヤーの作成","level":"1.2","depth":1,"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Unityチュートリアル①","language":"ja","gitbook":"*","description":"This is a Unity example"},"file":{"path":"page1.md","mtime":"2021-01-17T13:22:14.321Z","type":"markdown"},"gitbook":{"version":"3.6.15","time":"2021-01-17T13:26:46.238Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
