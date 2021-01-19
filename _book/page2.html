@@ -1,0 +1,360 @@
+
+<!DOCTYPE HTML>
+<html lang="ja" >
+    <head>
+        <meta charset="UTF-8">
+        <title>新規シーンの作成 · Unityチュートリアル①</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 3.6.15">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="styles/website.css">
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="page1.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="検索ワードを入力" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="page1.html">
+            
+                <a href="page1.html">
+            
+                    
+                    プレイヤーの作成
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3" data-path="page2.html">
+            
+                <a href="page2.html">
+            
+                    
+                    新規シーンの作成
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            HonKitで公開 
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >新規シーンの作成</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="新規シーンの作成と画面遷移">新規シーンの作成と画面遷移</h1>
+<h2 id="新規シーンの作成">新規シーンの作成</h2>
+<p>早速新規でシーンを作成したいと思います。</p>
+<p>現在のシーンがきちんと保存してあるのを確認してください。</p>
+<p><img src="img/image2-1.png" alt=""></p>
+<p>そうすると画面右上の方にユーザーアイコンがあると思うのでそこをクリックして、「Create a Unity ID」を選択します。</p>
+<p><br>
+<br></p>
+<p><img src="img/image2-2.png" alt=""></p>
+<p>そうすると、画面のようなページが開くので、メールアドレス、パスワード、ユーザーネーム、フルネームを記述してください。そしてチェックボックス全てにチェックを入れ「Create a Unity ID」を選択します。</p>
+<p>そうすると、登録したメールアドレス宛にUnityから確認のメールが届き、そこに記載されているリンクを開くと登録完了です。</p>
+<p>もしくはGoogleアカウント、Facebookアカウントでもログインすることが可能です。任意の方法を選びましょう。</p>
+<p><br></p>
+<p>そしてブラウザでUnityのログイン画面が表示されれば無事アカウントの作成は完了です。
+先ほど登録したメールアドレスとパスワードを入力してログインしましょう。
+Google、Facebookアカウントでログインする場合は右のボタンからログインしてください。</p>
+<h1 id="unityhubのインストール">UnityHubのインストール</h1>
+<p>Unityアカウントの作成が終わったら、インストール作業を行います。</p>
+<p><br></p>
+<p><img src="img/image2-3.png" alt=""></p>
+<p>Unityの公式ページの右上にある「はじめる」ボタンをクリックします。</p>
+<p><br></p>
+<p><img src="img/image2-4.png" alt=""></p>
+<p>そうするとプランの選択画面になるので、個人で利用する場合は個人向けタブから任意のプランを選択してください。学生以外の方は基本的に「Personal」プランを選択することになると思います。ただしこちらは「収入ならびに資金調達（自己資金含む）の合計が年間10万ドル以下の場合のみ」利用することができます。</p>
+<p>その他利用資格についてはプランの欄をご確認ください。</p>
+<p><br></p>
+<p><img src="img/image2-5.png" alt=""></p>
+<p>こちらの画面では新規ユーザー向けとリピートユーザー向けのインストーラーが表示されています。
+新規ではじめる場合は新規ユーザーを選択するのは普通なのですが、こちらは公式のチュートリアルがついてくるだけで、それ以外は何も変わりません。</p>
+<p>こちらの公式チュートリアルはとても分かりやすく作られているのですが、全て英語表記になっていたり、完成されたプロジェクト（サンプルゲーム）が一緒にダウンロードされるので少し時間がかかってしまいます。</p>
+<p>こちらのチュートリアルはあとでもダウンロードできるので、今回は<strong>リピートユーザー</strong>の方からインストールを行いましょう。</p>
+<p><br></p>
+<p><img src="img/image2-6.png" alt=""></p>
+<p>利用規約についての画面が表示されるので、同意の部分にチェックを入れて「Download Unity Hub」と書かれたボタンをクリックしましょう。</p>
+<p>こちらのUnityHubというものは、Unityのバージョンを管理してくれるデスクトップアプリケーションです。簡単にUnityのバージョンの変更やプロジェクト作成の一括管理ができます。</p>
+<p>Unityは頻繁にアップデートを繰り返しており、短い頻度で新しいバージョンのUnityがリリースされています。2019年には60回以上もバージョンの更新があったのですが、アプリケーションの制作途中にUnityをアップデートすると予期せぬエラーで突然動かなくなるということもよく起こってしまいます。</p>
+<p>そうならない為に、<strong>一度アプリケーションを作り始めたらそのアプリケーションは完成するまで同じバージョンのUnityで作り切るようにしましょう。</strong>
+しかし、チーム開発やUnityの新しい機能を使いたいとなった場合はUnityのバージョンをアップデートしなければならない状況も生まれてくることがあります。</p>
+<p>そのような場合にUnityHubを利用していると、現在のバージョンのUnityを保持しておきながら新しいバージョンのUnityも同時にインストールして使用することができます。</p>
+<p>このようにUnityHubにはプロジェクトごと、チームや機能に合わせてUnityのバージョンを切り替えられるというメリットがあるので、ぜひこのUnityHubを有効的に利用してみましょう。</p>
+<p><br></p>
+<p>ダウンロードが終わったら、表示に従いセットアップを進めてください。
+無事UnityHubが起動されたら成功です。</p>
+<h1 id="初期設定">初期設定</h1>
+<p>UnityHubを開いたらまずはサインインをします。</p>
+<p><img src="img/image2-7.png" alt=""></p>
+<p>UnityHubの右上のユーザーアイコンをクリックし、サインインを選択します。
+先ほど登録したメールアドレスとパスワード、もしくはGoogleかFacebookのアカウントでログインをしましょう。</p>
+<p><br></p>
+<p><img src="img/image2-8.png" alt=""></p>
+<p>次にライセンス認証を行う必要があります。</p>
+<p><br></p>
+<p><img src="img/image2-9.png" alt=""></p>
+<p>License managementで、PlusまたはProを利用の場合は、Unity Plus or Proの下の「Enter your serial number」の欄に購入したライセンスのシリアル番号を入力してください。Personalを利用する場合はそちらを選択して画面右下の「実行」ボタンをクリックしてください。</p>
+<p><br></p>
+<p>この後に簡単なアンケートのようなものが表示された場合は、内容に沿って回答していきましょう。英語表記で少し分かりづらいかもしれませんが間違った回答をしても特に問題はありません。</p>
+<p>Thank youの画面に切り替わったら画面右下の「Install Now」をクリックしましょう。
+そして「Setup Unity to begin creating」の画面になったら画面中央の「Download」ボタンをクリックします</p>
+<h1 id="unityのインストール">Unityのインストール</h1>
+<p>そうするとUnityのインストール画面が出てくるのでここでイントールするUnityのバージョンを選択します。</p>
+<p>UnityHubはいくつものUnityをバージョン別に保持できるので、ここで間違ったバージョンのUnityをダウンロードしても問題ありません。</p>
+<p><br></p>
+<p><img src="img/image2-10.png" alt=""></p>
+<p>UnityのバージョンのおすすめはUnityのバージョン表記の右側に「LTS」の表示があるバージョンです。
+LTSとはロングタームサポートの略で、長期間このバージョンのUnityをサポート・メンテナンスしますという意味になっています。</p>
+<p>特にどのバージョンでなければいけないということがなければこのLTSの表示があるバージョンの中で一番新しいものを選択してください。</p>
+<p>もし新しい機能も試してみたいというものがあれば一番上の最新バージョンもダウンロードしてみてもいいかもしれません。</p>
+<p><br></p>
+<p><img src="img/image2-11.png" alt=""></p>
+<p>「Add components to your install」の画面でチェックボックスをクリックしてチェックをつけたコンポーネントがインストールされます。</p>
+<p>VisualStudioがインストールされていない場合にはDev toolsでMicrosoft Visual Stuido Communityに必ずチェックをつけてください。</p>
+<p>Platformsでは開発対象のプラットフォームを選択します。こちらは後からでも追加することができるので初回は必要最低限のプラットフォームを選択しておきましょう。</p>
+<p>今回は<strong>WebGL</strong>と<strong>AndroidBuildSupport</strong>にチェックをつけてNextをクリックしてください。</p>
+<p>また、Unityの各種表示を日本語にしたい場合はリストの下の方にあるLanguage packsの中から日本語にチェックをつけても構いません。ただし日本語表示にすると、ウェブ上にある様々なUnityの記事の表記と異なり分かりにくくなるという問題もあるので気をつけましょう。</p>
+<p>初めてVisualStudioをインストールする場合はライセンスに同意する必要があります。</p>
+<p>しばらく待っているとインストールが完了します。</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="page1.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: プレイヤーの作成">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"新規シーンの作成","level":"1.3","depth":1,"previous":{"title":"プレイヤーの作成","level":"1.2","depth":1,"path":"page1.md","ref":"./page1.md","articles":[]},"dir":"ltr"},"config":{"plugins":["livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Unityチュートリアル①","language":"ja","gitbook":"*","description":"This is a Unity example"},"file":{"path":"page2.md","mtime":"2021-01-19T09:33:52.277Z","type":"markdown"},"gitbook":{"version":"3.6.15","time":"2021-01-19T09:34:21.798Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
