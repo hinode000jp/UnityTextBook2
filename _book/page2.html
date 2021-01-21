@@ -188,6 +188,123 @@
 <p> 子要素のTextも変更します。
  ヒエラルキーでStartButtonの子要素のTextを選択し、<br> Text : START<br> FontSize : 32<br> にして下さい。</p>
 <p>これでスタートボタンの配置は完了です。<br>あとはこのスタートボタンを押したら先程のSampleSceneへ画面遷移させるようにします。</p>
+<p><br></p>
+<h2 id="画面遷移">画面遷移</h2>
+<p><img src="img/image2-6.png" alt=""></p>
+<p>まずは新規で空のゲームオブジェクトを作成します。<br>空のオブジェクトの作成方法はヒエラルキーから「CreateEmpty」を選択します。</p>
+<p>そして、名前をGameManagerにして下さい。</p>
+<p>GameManagerに新規でスクリプトを作成し、名前を「ScreenManager」とします。<br>作成したスクリプトはScriptsフォルダに格納しておいて下さい。</p>
+<p><br></p>
+<p>そしてこのScreenManagerスクリプトをVisualStudioで開きます。</p>
+<p>そしてコードを以下のように変更して下さい。</p>
+<pre><code class="lang-c#"><span class="hljs-keyword">using</span> System.Collections;
+<span class="hljs-keyword">using</span> System.Collections.Generic;
+<span class="hljs-keyword">using</span> UnityEngine;
+<span class="hljs-keyword">using</span> UnityEngine.SceneManagement;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">ScreenManager</span> : <span class="hljs-title">MonoBehaviour</span>
+{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">OnClickStartButton</span>(<span class="hljs-params"></span>)</span>
+    {
+        SceneManager.LoadScene(<span class="hljs-string">&quot;SampleScene&quot;</span>);
+    }
+}
+</code></pre>
+<p>まず<code>using UnityEngine.SceneManagement;</code>でこのファイル内でSceneManagement機能を使えるようにしておきます。</p>
+<p>次にOnClickStartButtonメソッドを作成します。<br>ここで注意してもらいたいのが、このメソッドがパブリックメソッドになっている点です。</p>
+<p>パブリックにした理由は、このメソッドを外部（ボタン）から呼び出せるようにするためです。このメソッドをprivateにしているとこのファイル内でしか扱えなくなり、ボタンクリックで呼び出せなくなるので気をつけて下さい。</p>
+<p><code>SceneManager.LoadScene(&quot;SampleScene&quot;);</code>で<code>SceneneManager</code>クラスの<code>LoadScene</code>メソッドを利用してSampleSceneという名前のシーンを読み込むようにしています。<br><code>LoadScene</code>メソッドは括弧内の引数に記述されたシーンを読み込むという命令文になっています。</p>
+<p>ここまで記述終わりましたら保存してUnityに戻りましよう。</p>
+<p><br></p>
+<p><img src="img/image2-7.gif" alt=""></p>
+<p>Unityに戻ったら、ヒエラルキーウィンドウでStartButtonを選択し、インスペクターウィンドウから「OnClick()」を見つけて下さい。</p>
+<p>OnClick()を見つけたら、そちらの「＋」アイコンをクリックします。<br>こちらのOnClick()はボタンがクリックされた時の動作を設定するパラメータです。</p>
+<p>そうすると、上記の画像のような項目が追加されますので、その空欄の部分にヒエラルキーウィンドウから「GameManager」オブジェクトをドラッグ&amp;ドロップして下さい。</p>
+<p>次に右側の項目から「ScreenManager -&gt; OnClickStartButton()」を選択します。ScreenManagerが表示されない場合は、GameManagerオブジェクトにScreenManagerスクリプトがアタッチされているか確認して下さい。<br>OnClickStartButton()が項目にない場合はこのメソッドがきちんとパブリックメソッドになっているか確認して下さい。</p>
+<p><br></p>
+<p><img src="img/image2-8.gif" alt=""></p>
+<p>次に、シーンをBuildするシーンとして登録します。</p>
+<p>Unityから「File -&gt; BuildSettings」を開きましょう。</p>
+<p>そして、右上の方にある「AddOpenScenes」をクリックして下さい。<br>これで現在のシーンを登録できました。<br>次にゲームシーンである「SampleScene」も登録します。プロジェクトウィンドウからSampleSceneをドラッグ&amp;ドロップで「ScenensInBuild」の場所に追加して下さい。<br>これで登録は完了です。</p>
+<div class="warning">
+    シーンは上から順番に再生されるので上にTitleSceneを配置して下さい。<br>
+    順番はドラッグ&amp;ドロップでも変更できます。
+</div>
+
+<p><br></p>
+<p>こちらのウィンドウを消してUnityを保存し、実行してみましょう。</p>
+<p>Startボタンを押してきちんと画面遷移（Unityちゃんがいるシーンに移動）できていれば成功です。</p>
+<h2 id="ゲームのビルド">ゲームのビルド</h2>
+<p>次に現在のUnityのプロジェクトをビルドしたいと思います。<br>今回はPCゲームとしてビルドしてみましょう。<br>ただし、このままでもビルドできるのですが１つ問題点があります。</p>
+<p>それは現状のままアプリをビルドすると、アプリが全画面で表示され、終了させる事ができないという点です。</p>
+<p>WebGLへのビルドはブラウザの閉じるボタンをクリックすれば終了できるのですが、PCゲームだと終了ボタンを作らないと強制終了しか終わらせる方法がありません。</p>
+<p>ですので、今回は「ESC」ボタンを押したらアプリを終了できるように修正します。</p>
+<p><br></p>
+<p><img src="img/image2-9.png" alt=""></p>
+<p>まずはプロジェクトウィンドウで新規に「GameQuit」スクリプトを作成し、Scriptsフォルダに格納して下さい。</p>
+<p><br></p>
+<p>そしてGameQuitスクリプトをVisualStudioで開き、コードを以下のように変更して下さい。</p>
+<pre><code class="lang-c#"><span class="hljs-keyword">using</span> System.Collections;
+<span class="hljs-keyword">using</span> System.Collections.Generic;
+<span class="hljs-keyword">using</span> UnityEngine;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">GameQuit</span> : <span class="hljs-title">MonoBehaviour</span>
+{
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Update</span>(<span class="hljs-params"></span>)</span>
+    {
+        <span class="hljs-keyword">if</span> (Input.GetKey(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
+}
+</code></pre>
+<p><code>if (Input.GetKey(KeyCode.Escape))</code>でパソコンのESCキーが押されたらという条件分岐になります。</p>
+<p><code>Application.Quit();</code>でアプリケーションを終了させるという命令文になっていますので、ESCキーが押された瞬間にこちらのアプリケーションが終了されます。</p>
+<p>ここまでを保存してUnityに戻りましょう。</p>
+<p><br></p>
+<p><img src="img/image2-10.png" alt=""></p>
+<p>ヒエラルキーでGameManagerを選択し、インスペクターにGameQuitスクリプトをドラッグ&amp;ドロップでアタッチして下さい。<br>そしてこちらのシーンを保存します。</p>
+<p><br></p>
+<p><img src="img/image2-11.png" alt=""></p>
+<p>同様にSampleSceneを開き、新しく空のGameManagerオブジェクトを作成し、GameQuitスクリプトをアタッチして保存して下さい。</p>
+<p>これで準備か完了です。</p>
+<p><br></p>
+<p><img src="img/image2-12.png" alt=""></p>
+<p>UnityのFileからBuildSettingsを開きましょう。<br>そしてビルドするシーンが登録されているか、ビルドするアプリケーションのプラットフォームは合っているか（今回はPC）を確認して画面右下の「Build &amp; Run」をクリックして下さい。</p>
+<p><br></p>
+<p><img src="img/image2-13.png" alt=""></p>
+<p>そうすると、このように保存先とアプリケーション名を入力するウィンドウが開きますので、任意の保存先とアプリケーション名を入力し、「Save」をクリックして下さい。</p>
+<p><br></p>
+<p><img src="img/image2-14.png" alt=""></p>
+<p>ビルドに時間がかかると思いますが、きちんとPCアプリとして実行され、ESCキーの入力で終了できていれば成功です。</p>
+<p><br></p>
+<hr>
+
+<h2 id="アセットの建物を使ってみる">アセットの建物を使ってみる</h2>
+<p>もしゲーム画面の風景が寂しいと感じる場合は、AssetStoreから建物の3Dデータをインポートし、使用してみましょう。</p>
+<p><br></p>
+<p><img src="img/image2-15.png" alt=""></p>
+<p>好きなものを使ってみて構わないのですが、今回は「FurnishedCabin」というアセットをダウンロードして使用してみます。<br>まずはこちらをAssetStoreで検索し、インポートしましょう。</p>
+<p><br></p>
+<p><img src="img/image2-16.png" alt=""></p>
+<p>次にSampleSceneを開き、ヒエラルキーから「unitychan_dynamic」をプロジェクトウィンドウにドラッグ&amp;ドロップしてプレハブ化しておきましょう。  </p>
+<p><br></p>
+<p><img src="img/image2-17.png" alt=""></p>
+<p>その時にこのようなウィンドウが表示されると思うので、「OriginalPrefab」を選択して下さい。これはもとのプレハブから切り離して新しいプレハブを作成するという意味です。</p>
+<p><br></p>
+<p><img src="img/image2-18.png" alt=""></p>
+<p>そうしたら今作成したunitychan_dynamicというプレハブを新しく「Prefabs」というフォルダを作成して格納しておきましょう。</p>
+<p><br></p>
+<p><img src="img/image2-19.png" alt=""></p>
+<p>次に現在のシーンを保存し、プロジェクトウィンドウから「FurnishedCabin -&gt; Scenes -&gt; Demo」をダブルクリックで開いて下さい。</p>
+<p>そうすると、このようにサンプルとして作成されているシーンが表示されます。</p>
+<p><br></p>
+<p><img src="img/image2-20.png" alt=""></p>
+<p>そしてプロジェクトウィンドウから先程プレハブ化した「unitychan_dynamic」と、StandardAssetsから「Cameras -&gt; Prefabs -&gt; FreeLookCameraRig」をヒエラルキーにドラッグ&amp;ドロップして配置して下さい。<br>Unityちゃんは現在のFPSControllerと同じ場所に配置すると綺麗に写るかと思います。<br>そしてそのFPSControllerは不要なので削除して下さい。</p>
+<p>最後にFreeLookCameraRigのTargetの部分にunitychan_dynamicをドラッグ&amp;ドロップして準備完了です。</p>
+<p>Unityを実行してみて3Dキャラクターが家の中を自由に動き回っていれば成功です。</p>
+<p><img src="img/image2-21.png" alt=""></p>
 
                                 
                                 </section>
@@ -227,7 +344,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"新規シーンの作成","level":"1.3","depth":1,"previous":{"title":"プレイヤーの作成","level":"1.2","depth":1,"path":"page1.md","ref":"./page1.md","articles":[]},"dir":"ltr"},"config":{"plugins":["livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Unityチュートリアル①","language":"ja","gitbook":"*","description":"This is a Unity example"},"file":{"path":"page2.md","mtime":"2021-01-20T02:13:14.675Z","type":"markdown"},"gitbook":{"version":"3.6.15","time":"2021-01-20T02:13:29.331Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"新規シーンの作成","level":"1.3","depth":1,"previous":{"title":"プレイヤーの作成","level":"1.2","depth":1,"path":"page1.md","ref":"./page1.md","articles":[]},"dir":"ltr"},"config":{"plugins":["livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Unityチュートリアル①","language":"ja","gitbook":"*","description":"This is a Unity example"},"file":{"path":"page2.md","mtime":"2021-01-21T07:51:33.740Z","type":"markdown"},"gitbook":{"version":"3.6.15","time":"2021-01-21T07:52:36.352Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
